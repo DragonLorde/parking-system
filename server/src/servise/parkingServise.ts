@@ -1,8 +1,22 @@
 import parkingModel from "../models/parking.model"
+import { IServiseProps } from './model/servise.model'
 
-export const createParkingServise = async (parkingData: IServiseProps) => {
+export const createParkingServise = async (parkingData) => {
+    
+    console.log(parkingData);
+    
+    if(Object.keys(parkingData).length === 0) {
+        return {
+            data: null,
+            status:false,
+        }
+    }
     const createdParking = await parkingModel.create(parkingData)
-    return createdParking
+    const data = {
+        data: createdParking,
+        status: true,
+    }
+    return data
 }
 
 
@@ -22,11 +36,7 @@ export const getAllParkingServise = async () => {
 export const setParkingSeetServise = async (parkingData: IServiseProps) => {
     const filter = { _id: parkingData.id }
     const prev = await parkingModel.findById(parkingData.id)
-    prev.reserved.push({
-        index: parkingData.resserverIndex,
-        regNumber: parkingData.regNumber,
-        name: parkingData.userName
-    })
+    prev.reserved.push(parkingData.index)
     console.log(prev.reserved)
     
     const update = { "reserved": prev.reserved }

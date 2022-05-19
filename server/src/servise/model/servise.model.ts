@@ -1,4 +1,4 @@
-interface IServiseProps {
+export interface IServiseProps {
     id?: string,
     resserverIndex?: number,
     locathion: string,
@@ -7,4 +7,5 @@ interface IServiseProps {
     reserved: string[],
     regNumber?: string,
     userName?: string,
+    index?: number,
 }

@@ -1,0 +1,1 @@
+export type checkSessionType = (key: string) => any

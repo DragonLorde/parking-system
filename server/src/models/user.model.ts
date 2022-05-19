@@ -19,7 +19,7 @@ const UserSchema = new Schema({
         required: true,
     },
     pass:{
-        type: String,
+        type: Boolean,
         required: true
     },
     reservedSite: {

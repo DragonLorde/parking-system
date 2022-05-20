@@ -27,9 +27,6 @@ const Park = () => {
     const ParkingSeet = useMemo(() => {
         const arrMemo = []
         for(let i = 1; i <= parkingData.lenght; i++) {
-            if(parkingData.reserved[i] === i) {
-                arrMemo.push(true)
-            }
             arrMemo.push(false)
         }
         console.log(arrMemo);

@@ -51,7 +51,9 @@ const ParkingList:FC = () => {
         <Title>
             Список стоянок
         </Title>
-        <div className='wrap'>
+        <div className='wrap' style={{
+            height:'320px',
+        }}>
             {parkingData && parkingData.map((item) => (
                 <ListContainer key={item.name} to={`/park/${item._id}`}>
                     <p>Название: <span>{item.name}</span> </p>

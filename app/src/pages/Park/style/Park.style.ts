@@ -24,7 +24,7 @@ const Seet = styled.div`
     align-items: center;
     width: 80%;
     overflow-y: auto;
-    height: 456px;
+    height: 320px;
     max-height: 456px;
     &::-webkit-scrollbar {
         width: 10px;

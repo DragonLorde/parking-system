@@ -38,7 +38,7 @@ const DashBoard:FC = () => {
       <DashBoardRightContainer>
         <Header userName={currentSession?.data?.login}></Header>
         <Outlet />
-
+        
       </DashBoardRightContainer>
     </DashBoardContainer>
   )

@@ -49,11 +49,17 @@ const Registration = () => {
 
   return (
     <RegistrationContainer>
-        <FormContainer>
+        <FormContainer style={{
+          height: '775px',
+        }}>
           <Form onSubmit={onSubmitData}>
             <Input placeholder='login' required onChange={onChangeInput} name='login'/>
             <Input placeholder='Password' required onChange={onChangeInput} name='password'/>
             <Input placeholder='lastName' required onChange={onChangeInput} name='lastName'/>
+            <Input placeholder='Укажите марку' required  name='lastName'/>
+            <Input placeholder='Укажите модель' required  name='lastName'/>
+            <Input placeholder='Укажите цвет' required  name='lastName'/>
+            <Input placeholder='загрузите фото' required name='lastName' type='file'/>
             <Input placeholder='regNumber' required onChange={onChangeInput} name='regNumber'/>
             <Button>
               Регистрация

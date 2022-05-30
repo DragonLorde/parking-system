@@ -10,10 +10,16 @@ const {
     ParkingListContainer,
 } = Styled
 
+const serarchParams: any = {
+    number: "regNumber",
+    user: "login"
+}
+
 const UserList = () => {
     const [inputValue, setInputValue] = useState('')
     const [userData, setUserData] = useState<any[]>()
     const [userDataFiltered, setUserDataFiltered] = useState<any[]>()
+    const [ filterQ, setFilterQ ] = useState<any>(serarchParams.number)
     const getData = async () => {
         const response = await axios.get(API_URL.getAllUsers)
         const data = response.data
@@ -27,7 +33,11 @@ const UserList = () => {
             const inputValue = e.target.value.toLowerCase()
             
             let resArr = userData?.filter((item) => {
-                return item.login.search(inputValue) !== -1
+                if(filterQ === 'login') {
+                    return item.login.search(inputValue) !== -1
+                } else {
+                    return item.regNumber.search(inputValue) !== -1
+                }
             })
             console.log(resArr?.length);
             
@@ -35,6 +45,12 @@ const UserList = () => {
             setInputValue(e.target.value)
             
     }, [userData, inputValue])
+
+    const filterQchange = (e: any) => {
+        const q =  serarchParams[e.target.value]
+        setFilterQ( q )        
+    }
+
     return (
         <ParkingListContainer>
             <Title>
@@ -46,6 +62,10 @@ const UserList = () => {
                     onChange={onFilter}
                     value={inputValue}
                 />
+                <select name="q" id="" style={{marginLeft:'30px'}} onChange={ filterQchange}>
+                    <option value="number">ГосНомер</option>
+                    <option value="user" >Имя</option>
+                </select>
             </div>
             <div className='wrap' style={{
                 justifyContent:'initial'

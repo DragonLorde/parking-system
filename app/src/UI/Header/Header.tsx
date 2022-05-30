@@ -19,6 +19,12 @@ const Header:FC<HeaderProps> = ({userName}) => {
     const time = new Date().toLocaleTimeString().slice(0,-3);
     const [ avatar, setAvatar ] = useState<string>('https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png')
 
+    const getRadnom = (min: number, max: number): number => {
+        return Math.floor(min + Math.random() * (max - min))
+    }
+
+    const countUsers = getRadnom(1, 50)
+
     return (
     <HeaderContainer>
         <Text style={{
@@ -27,6 +33,11 @@ const Header:FC<HeaderProps> = ({userName}) => {
             Дата: {date}
             <br />
             Время: {time}
+        </Text>
+        <Text style={{
+            marginRight: '60px',            
+        }}>
+            Количество посещений: {countUsers}
         </Text>
         <HeaderLogin>
             <Login>
